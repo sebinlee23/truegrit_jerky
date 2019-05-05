@@ -1,0 +1,10 @@
+{% if found == True %}
+<p class="error">This email is already in use</p>
+{% endif %}
+{% if found == False %}
+<p class="success"> This username is available</p>
+{% endif %}
+
+{% if found == 2 %}
+<p class="error">Invalid email format.</p>
+{% endif %}

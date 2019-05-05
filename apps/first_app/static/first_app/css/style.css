@@ -1,0 +1,513 @@
+/* * {
+    outline: 1px dotted pink;
+} */
+
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+}
+
+#container {
+    margin-top: 100px;
+    padding-bottom: 115px;
+}
+
+#whole_nav {
+    width: 95%;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+li {
+    display: inline-block;
+    margin-right: 25px;
+    font-family: 'Ultra', serif;
+    font-size: 1.2em;
+}
+
+#main_logo {
+    width: 12em;
+    height: 3.5em;
+    margin-left: 35px;
+
+}
+
+#main_nav {
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+#first_image {
+    background-image: url("wind_mill.jpg");
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 200px;
+    padding-top: 100px;
+
+}
+
+#second_image {
+    background-image: url("desert.jpg");
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 250px;
+    padding-top: 100px;
+}
+
+#third_image {
+    background-image: url("lone.png");
+    width: 100%;
+    height: 700px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    padding: 200px;
+}
+.wrapper {
+    width: 45%;
+}
+.content_title {
+    font-size: 3rem;
+    font-family: 'Quattrocento', serif;
+}
+
+.description {
+    font-size: 2em;
+    font-family: 'Quattrocento', serif;
+}
+
+#wrapper_3 {
+    background-color: black;
+    opacity: 0.8;
+    width: 90%;
+    height: 25%;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+#learn_more {
+    background-color: white;
+    padding: 10px;
+    color:black;
+    font-family: Arial;
+    border: 3px solid black;
+    text-decoration: none;
+}
+.sub-content {
+    width: 80%;
+    margin: 25px auto 0 auto;
+    font-family: 'Quattrocento', serif;
+}
+
+.sub-content h1 {
+    width: 100%;
+    font-size: 4em;
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    margin: 35px auto 0px auto;
+    width: 80%;
+    align-items: center;
+
+}
+.list p {
+    height: 50px;
+    margin-left: 35px;
+    font-size: 1.3rem;
+}
+.list-img {
+    width: 120px;
+    height: 120px;
+}
+.list p .list_title {
+    font-size: 2rem;
+}
+#space-image {
+    text-align: right;
+    margin: 0 auto;
+    width: 80%;
+}
+#space {
+    width: 400px;
+    border-radius: 10px;
+    margin-left: 100px
+}
+#astro {
+    width: 200px;
+    border-radius: 10px;
+}
+
+footer {
+    width: 100%;
+    height: 250px;
+    background-color: darkgray;
+    text-align: center;
+    padding: 25px;
+}
+
+#social_network img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+
+#quan_cart {
+    color: red;
+}
+
+
+
+
+
+@media only screen and (max-width: 480px) {
+    
+    header {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        background-color: white;
+    }
+    
+    #container {
+        margin-top: 100px;
+    }
+    #whole_nav {
+        width: 95%;
+        display: inline-flex;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+    
+    li {
+        width: 25%;
+        margin-right: 15px;
+        font-family: 'Ultra', serif;
+        font-size: 0.7em;
+    }
+    
+    #main_logo {
+        width: 8em;
+        height: 3em;
+        margin-left: 15px;
+    }
+    #main_nav {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    #first_image {
+        background-image: url("wind_mill.jpg");
+        width: 100%;
+        height: 700px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 20px;
+        padding-top: 50px;
+    
+    }
+    
+    #second_image {
+        background-image: url("desert.jpg");
+        width: 100%;
+        height: 700px;
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 20px;
+        padding-top: 50px;
+    }
+    
+    #third_image {
+        background-image: url("lone.png");
+        width: 100%;
+        height: 700px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 20px;
+        padding-top: 250px;
+    }
+
+    .wrapper {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .content_title {
+        font-size: 2.5rem;
+        font-family: 'Quattrocento', serif;
+    }
+    
+    .description {
+        font-size: 1.5em;
+        font-family: 'Quattrocento', serif;
+    }
+    
+    #wrapper_3 {
+        background-color: black;
+        opacity: 0.8;
+        width: 85%;
+        height: 13%;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+        padding-top: 10px;
+    }
+    #image3_title {
+        font-size: 1.5rem;
+    }
+    #learn_more {
+        background-color: white;
+        padding: 10px;
+        color:black;
+        font-family: Arial;
+        border: 3px solid black;
+        text-decoration: none;
+    }
+
+
+
+    .sub-content {
+        width: 80%;
+        margin: 25px auto 15px auto;
+        font-family: 'Quattrocento', serif;
+        text-align: center;
+    }
+    
+    .sub-content h1 {
+        width: 100%;
+        font-size: 2rem;
+    }
+    
+    .list {
+        display: flex;
+        margin: 35px auto 15px auto;
+        width: 80%;
+        height: 200px;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .list p {
+        height: 50px;
+        margin-left: 25px;
+        font-size: 0.8rem;
+    }
+    .list-img {
+        width: 100px;
+        height: 100px;
+    }
+    .list p .list_title {
+        font-size: 1rem;
+    }
+    #space-image {
+        text-align: center;
+        margin: 0 auto;
+        width: 75%;
+    }
+    #space {
+        width: 80%;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+    #astro {
+        width: 150px;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+    
+    footer {
+        width: 100%;
+        height: 200px;
+        background-color: darkgray;
+    }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 1280px) {
+    header {
+        position: fixed;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        background-color: white;
+    }
+    
+    #container {
+        margin-top: 100px;
+    }
+    #whole_nav {
+        width: 95%;
+        display: inline-flex;
+        justify-content: space-evenly;
+    }
+    
+    li {
+        display: inline-block;
+        margin-right: 5px;
+        font-family: 'Ultra', serif;
+        font-size: 0.9em;
+    }
+    
+    #main_logo {
+        width: 8em;
+        height: 3em;
+        margin-left: 15px;
+    }
+    #main_nav {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    
+    #first_image {
+        background-image: url("wind_mill.jpg");
+        width: 100%;
+        height: 700px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 20px;
+        padding-top: 50px;
+    
+    }
+    
+    #second_image {
+        background-image: url("desert.jpg");
+        width: 100%;
+        height: 700px;
+        background-size: cover;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 20px;
+        padding-top: 50px;
+    }
+    
+    #third_image {
+        background-image: url("lone.png");
+        width: 100%;
+        height: 700px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+        padding: 20px;
+        padding-top: 250px;
+    }
+
+    .wrapper {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .content_title {
+        font-size: 2.5rem;
+        font-family: 'Quattrocento', serif;
+    }
+    
+    .description {
+        font-size: 1.5em;
+        font-family: 'Quattrocento', serif;
+    }
+    
+    #wrapper_3 {
+        background-color: black;
+        opacity: 0.8;
+        width: 85%;
+        height: 13%;
+        margin: 0 auto;
+        text-align: center;
+        color: white;
+        padding-top: 10px;
+    }
+    #image3_title {
+        font-size: 1.5rem;
+    }
+    #learn_more {
+        background-color: white;
+        padding: 10px;
+        color:black;
+        font-family: Arial;
+        border: 3px solid black;
+        text-decoration: none;
+    }
+
+
+
+    .sub-content {
+        width: 80%;
+        margin: 25px auto 15px auto;
+        font-family: 'Quattrocento', serif;
+        text-align: center;
+    }
+    
+    .sub-content h1 {
+        width: 100%;
+        font-size: 2.5rem;
+    }
+    
+    .list {
+        display: flex;
+        margin: 35px auto 15px auto;
+        width: 80%;
+        height: 200px;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    .list p {
+        height: 50px;
+        margin-left: 25px;
+        font-size: 1rem;
+    }
+    .list-img {
+        width: 100px;
+        height: 100px;
+    }
+    .list p .list_title {
+        font-size: 1.3rem;
+    }
+    #space-image {
+        text-align: center;
+        margin: 0 auto;
+        width: 75%;
+    }
+    #space {
+        width: 80%;
+        border-radius: 10px;
+        margin: 0 auto;
+    }
+    #astro {
+        width: 150px;
+        margin: 0 auto;
+        border-radius: 10px;
+    }
+    
+    footer {
+        width: 100%;
+        height: 300px;
+        background-color: darkgray;
+        margin-top: 150px;
+    }
+}

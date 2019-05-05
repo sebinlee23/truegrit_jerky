@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css" integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'login_reg/css/style.css'%}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#user_email').keyup(function(){
+                var data = $("#reg_form").serialize()   // capture all the data in the form in the variable data
+                $.ajax({
+                    method: "POST",   // we are using a post request here, but this could also be done with a get
+                    url: "/username",
+                    data: data
+                })
+                .done(function(res){
+                    $('#email_message').html(res)  // manipulate the dom when the response comes back
+                })
+            })
+            $('#user_password').keyup(function(){
+                var data = $("#reg_form").serialize()   // capture all the data in the form in the variable data
+                $.ajax({
+                    method: "POST",   // we are using a post request here, but this could also be done with a get
+                    url: "/password",
+                    data: data
+                })
+                .done(function(res){
+                    $('#pass_message').html(res)  // manipulate the dom when the response comes back
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <header>
+        <img id ="logo" src="{% static 'login_reg/images/logo.png' %}"/>
+    </header>
+    <div id="container">
+            <h1>Welcome</h1>
+            <div id="register">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'not_logged_in' in message.tags %}
+                            <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <h6>If you are not a member yet, Register Here!</h6>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'register' in message.tags %}    
+                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <form action="/add_user" method="post" id="reg_form">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">First Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="fname" value="{{request.session.fname}}" placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Last Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lname" value="{{request.session.lname}}" placeholder="Enter your last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div id="email_message"></div>
+                        <input id ="user_email" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{request.session.email}}" placeholder="Enter your email">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <div id="pass_message"></div>
+                        <input id = "user_password" type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                            <label for="exampleInputPassword1">Confirm Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" name="confirm_password" placeholder="Password">
+                    </div>
+                    <div class = "right_button">
+                        <button type="submit" class="btn btn-primary">Register</button>
+                    </div>
+                </form>
+            </div>
+            <div id="login">
+                <h4>Log In Here!</h4>
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if 'login' in message.tags %}
+                        <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <form action="/login_user" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Your Email</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="login_email" value="{{request.session.login_email}}" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="login_password" placeholder="Password">
+                    </div>
+                    <div class = "right_button">
+                        <button type="submit" class="btn btn-primary">Sign In</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <footer>
+        <form action="/clear_reg" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Home</button>
+        </form>
+    </footer>
+</body>
+</html>

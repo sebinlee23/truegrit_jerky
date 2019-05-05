@@ -1,0 +1,90 @@
+/* * {
+    outline: 1px dotted pink;
+} */
+
+header {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    background-color: white;
+}
+
+#container {
+    margin-top: 100px;
+    min-height: 650px;
+    text-align: center;
+}
+#whole_nav {
+    width: 95%;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+li {
+    display: inline-block;
+    margin-right: 25px;
+    font-family: 'Ultra', serif;
+    font-size: 1.2em;
+}
+
+#main_logo {
+    width: 12em;
+    height: 3.5em;
+    margin-left: 35px;
+
+}
+
+#main_nav {
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+footer {
+    width: 100%;
+    height: 250px;
+    background-color: darkgray;
+    text-align: center;
+    padding: 25px;
+}
+
+#social_network img {
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+}
+
+#lone {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+}
+
+#about_us {
+    font-family: 'Quattrocento', serif;
+    width: 80%;
+    text-align: center;
+    margin: 30px auto;
+}
+
+#about_us h1 {
+    font-size: 4rem;
+    font-weight: bold;
+}
+
+#quan_cart {
+    color: red;
+}
+#order_table {
+    width: 50%;
+    margin: 0 auto;
+}
+
+#order_table h5, p {
+    text-align: start;
+}
+
+#back {
+    text-align: end;
+}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>True Grit | About</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'first_app/css/order.css' %}">  
+    <link rel="icon" href="{% static 'first_app/images/icon.png' %}" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Ultra" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento:400,700" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light" id="main_nav">
+            <a class="navbar-brand" href="/"><img id = "main_logo" src="{% static 'first_app/images/true_logo.png' %}"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse whole.nav" id="navbarNavDropdown">
+                <ul class="navbar-nav" id ="whole_nav">
+                    <div id = 'nav_left'>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">ABOUT<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/program">PROGRAM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop">SHOP</a>
+                        </li>
+                    </div>
+                    <div id = 'nav_right'>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                MY ACCOUNT
+                            </a>
+                            {% if request.session.user_id > 0 %}
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/profile">Profile</a>
+                                <a class="dropdown-item" href="/log_out">Log Out</a>
+                            </div>
+                            {% else %}
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/register">Register / Sign In</a>
+                            </div>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">CART <span id='quan_cart'>{% if request.session.total_q > 0 %}{{ request.session.total_q }}{% endif %}</span></a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id='order_container'>
+        <div id = "about-image">
+            <img id ="lone" src="{% static 'first_app/images/jerky2.jpg' %}"/>
+        </div>
+        <div class="album py-5 bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{% static 'first_app/images/jerky.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><b>Original</b> - The original recipe that will be loved by everyone.</p>
+                                <br>
+                                <br>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <form action="/add_cart" class ="quant_order" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select Quantity</label>
+                                            <input type="hidden" name="type" value="original">
+                                            <select class="form-control" id="exampleFormControlSelect1" name ="quantity_original">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{% static 'first_app/images/jerky.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><b>Teriyaki</b> - If you want something sweet, Teriyaki will be a perfect treat for you</p>
+                                <br>
+                                <br>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <form action="/add_cart" class ="quant_order" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select Quantity</label>
+                                            <input type="hidden" name="type" value="teriyaki">
+                                            <select class="form-control" id="exampleFormControlSelect1" name ="quantity_teriyaki">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{% static 'first_app/images/jerky.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><b>Texan BBQ</b> - We made this BBQ flavor in 100% Texan way, it will taste like seomthing that was just barbequed straight out from your backyard.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <form action="/add_cart" class ="quant_order" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select Quantity</label>
+                                            <input type="hidden" name="type" value="bbq">
+                                            <select class="form-control" id="exampleFormControlSelect1" name ="quantity_bbq">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{% static 'first_app/images/jerky.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><b>Spicy</b> - If you are up for a challenge try our spicy flavor, it will make you scream for water.</p>
+                                <br>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <form action="/add_cart" class ="quant_order" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select Quantity</label>
+                                            <input type="hidden" name="type" value="spicy">
+                                            <select class="form-control" id="exampleFormControlSelect1" name = "quantity_spicy">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{% static 'first_app/images/jerky.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><b>Mango Habanero</b> - This is our favorite voted by True Grit family, this is not your typical beef jerky get ready for mouthful of flavor.</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <form action="/add_cart" class ="quant_order" method="POST">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleFormControlSelect1">Select Quantity</label>
+                                            <input type="hidden" name="type" value="mango">
+                                            <select class="form-control" id="exampleFormControlSelect1" name = "quantity_mango">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                                <option>7</option>
+                                                <option>8</option>
+                                                <option>9</option>
+                                            </select>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Add to Cart</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" src="{% static 'first_app/images/jerky.png' %}" alt="Card image cap">
+                            <div class="card-body">
+                                <p class="card-text"><b>Tuna Jerky</b> - We are working hard to work with our friends from Alaska to make jerkys from Alaskan tuna, stay tuned for more information!</p>
+                                <br>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group" id="coming_soon">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">COMING SOON</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <footer>    
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Send Us a Message</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                    <input type="text" class="form-control" id="recipient-name" value ="service@truegrit.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Message:</label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <p>or</p>
+            <p>Find Us on Social Media</p>
+            <div id="social_network">
+                <img class = "list-img" src="{% static 'first_app/images/insta.png' %}"/>
+                <img class = "list-img" src="{% static 'first_app/images/facebook.png' %}"/>
+                <img class = "list-img" src="{% static 'first_app/images/twitter.png' %}"/>
+            </div>
+            <br>
+            <p>Copyright &copy; 2019, True Grit</p>
+        </footer>
+    </div>
+
+
+</body>
+</html>

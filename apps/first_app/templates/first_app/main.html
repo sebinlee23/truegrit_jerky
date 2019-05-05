@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>True Grit | Main</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+    <link rel="stylesheet" href="{% static 'first_app/css/style.css' %}">  
+    <link rel="icon" href="{% static 'first_app/images/icon.png' %}" type="image/png">
+    <link href="https://fonts.googleapis.com/css?family=Ultra" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quattrocento:400,700" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-light" id="main_nav">
+            <a class="navbar-brand" href="/"><img id = "main_logo" src="{% static 'first_app/images/true_logo.png' %}"/></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse whole.nav" id="navbarNavDropdown">
+                <ul class="navbar-nav" id ="whole_nav">
+                    <div id = 'nav_left'>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/about">ABOUT<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/program">PROGRAM</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/shop">SHOP</a>
+                        </li>
+                    </div>
+                    <div id = 'nav_right'>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                MY ACCOUNT
+                            </a>
+                            {% if request.session.user_id > 0 %}
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/profile">Profile</a>
+                                <a class="dropdown-item" href="/log_out">Log Out</a>
+                            </div>
+                            {% else %}
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/register">Register / Sign In</a>
+                            </div>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/cart">CART <span id='quan_cart'>{% if request.session.total_q > 0 %}{{ request.session.total_q }}{% endif %}</span></a>
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id='container'>
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active" id="first_image">
+                    <div class ="wrapper">
+                        <p class ="content_title">Organic Beef Jerky</p>
+                        <br>
+                        <p class = "description">Made with natural ingredients</p>
+                        <p class = "description">What makes True Grit Jerky special from others?</p>
+                        <a class = "description" id="learn_more" href="/about">Learn More</a>
+                    </div>
+                </div>
+                <div class="carousel-item" id="second_image">
+                    <div class="wrapper">
+                        <p class ="content_title">Delicious Jerky Delivered Every Month</p>
+                        <p class = "description">Choose your program</p>
+                        <a class = "description" id="learn_more" href="/program">Learn More</a>
+                    </div>
+                </div>
+                <div class="carousel-item" id="third_image">
+                    <div id="wrapper_3">
+                        <p id ="image3_title" class ="content_title">Proud to be 100% Texan beef jerky</p>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <div class="sub-content">
+            <h1>Why Beef Jerky</h1>
+            <div class = "list">
+                <img class = "list-img" src="{% static 'first_app/images/protein.png' %}"/>
+                <p><span class ="list_title">All the good lean protein from meat without fat</span>
+                    <br>
+                    <br>
+                    Most of its fat and moisture are removed during the process of making beef jerkys
+                </p>
+            </div>
+            <div class = "list">
+                <img class = "list-img" src="{% static 'first_app/images/pack.png' %}"/>
+                <p><span class ="list_title">Convinient</span>
+                    <br>
+                    <br>
+                    You can take it anywhere, literally <b><u>ANYWHERE</u></b>
+                </p>
+            </div>
+            <div id = "space-image">
+                <img id ="astro" src="{% static 'first_app/images/color_astro.png' %}"/>
+                <img id ="space" src="{% static 'first_app/images/space2.jpg' %}"/>
+            </div>
+        </div>
+        <div class="sub-content">
+            <h1>Why True Grit</h1>
+            <div class = "list">
+                <img class = "list-img" src="{% static 'first_app/images/usda.png' %}"/>
+                <p><span class ="list_title">USDA Approved 100% Organic</span>
+                    <br>
+                    <br>
+                    Made entirely with all natural ingredients
+                </p>
+            </div>
+            <div class = "list">
+                <img class = "list-img" src="{% static 'first_app/images/cal.png' %}"/>
+                <p><span class ="list_title">Delivered Monthly</span>
+                    <br>
+                    <br>
+                    Sign up for our program to have your beef jerky delivered monthly without having to worry about running out; <a href="/program">Learn More</a>
+                </p>
+            </div>
+        </div>
+    </div>
+        <footer id="footer">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Send Us a Message</button>
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                    <input type="text" class="form-control" id="recipient-name" value ="service@truegrit.com">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Message:</label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Send message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p></p>
+            <p>or</p>
+            <p>Find Us on Social Media</p>
+            <div id="social_network">
+                <img class = "list-img" src="{% static 'first_app/images/insta.png' %}"/>
+                <img class = "list-img" src="{% static 'first_app/images/facebook.png' %}"/>
+                <img class = "list-img" src="{% static 'first_app/images/twitter.png' %}"/>
+            </div>
+            <br>
+            <p>Copyright &copy; 2019, True Grit</p>
+        </footer>
+    
+
+
+</body>
+</html>
